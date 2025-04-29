@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laseghie <laseghie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 03:12:15 by laseghie          #+#    #+#             */
-/*   Updated: 2025/04/10 03:12:15 by laseghie         ###   ########.fr       */
+/*   Created: 2025/04/29 00:40:29 by laseghie          #+#    #+#             */
+/*   Updated: 2025/04/29 00:40:29 by laseghie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char    *ft_strrchr(const char *s, int c)
 {
-	const unsigned char	*p1;
-	const unsigned char	*p2;
-	size_t				i;
+    int    i;
+    char    *last_occurrence;
 
-	i = 0;
-	p1 = (const unsigned char *)s1;
-	p2 = (const unsigned char *)s2;
-	if (n == 0)
-		return (0);
-	while (i < n)
-	{
-		if (p1[i] != p2[i])
-			return ((p1[i] - p2[i]));
-		i++;
-	}
-	return (0);
+    i = 0;
+    last_occurrence = NULL;
+    while (s[i])
+    {
+        if (s[i] == (char)c)
+            last_occurrence = (char *)&s[i];
+        i++;
+    }
+    if (c == '\0')
+        return ((char *)&s[i]);
+    return (last_occurrence);
 }
